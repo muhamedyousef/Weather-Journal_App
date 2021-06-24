@@ -1,0 +1,29 @@
+{
+    "name": "weather-journal-app",
+    "version": "1.0.0",
+    "description": "a project to tryout async functions and dealing with APIs",
+    "main": "app.js",
+    "scripts": {
+        "test": "jest --collect-coverage"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/muhamedyousef/Weather-Journal_App.git"
+    },
+    "keywords": [
+        "Weather",
+        "App"
+    ],
+    "author": "Muhamed Yousef",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/muhamedyousef/Weather-Journal_App/issues"
+    },
+    "homepage": "https://github.com/muhamedyousef/Weather-Journal_App#readme",
+    "devDependencies": {
+        "jest": "^27.0.5"
+    },
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}

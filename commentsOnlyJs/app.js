@@ -10,3 +10,12 @@
 
 
 /* Function to GET Project Data */
+
+
+function first() {
+    let a = 3;
+    let b = 5;
+    return (a + b);
+}
+
+module.exports = first();
