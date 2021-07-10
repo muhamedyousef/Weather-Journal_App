@@ -1,113 +1,193 @@
-body {
-    background: #fffff8;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-#app {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* grid-auto-rows: minmax(150px, auto);*/
-    /* grid-template-columns:  */
-    height: 100vh;
-    background: #dcdcdc;
-    color: red;
-    justify-content: center;
-    grid-gap: 1em;
-    font-size: 20px;
-    font-family: 'roboto', sans-serif;
-}
-
-.holder {}
-
-.entry {
-    background: rgba(59, 74, 107, .4);
-}
-
-#entryHolder {}
-
-#date {}
-
-#temp {}
-
-#content {}
-
-.headline {}
-
-.title {}
+                                  :root {
+                                     --raleway: 'Raleway', sans-serif;
+                                     --oswald: 'Oswald', sans-serif;
+                                    --kake:#f0d43a;
+                                 }
+                                  body {
+                                     background: #fffff8;
+                                     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+                                 }
+                                 
+                                 #app {
+                                     height: 100vh;
+                                    /* background: cadetblue ;*/
+                                     margin: 0;
+                                     font-size: 20px;
+                                     background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(42, 28, 122, 0.73)),
+                                     url('/images/cloudy-weather.jpg') ;
+                                     background-position: center;
+                                     background-size: cover;
+                                     background-repeat: no-repeat;
+                                     background-attachment: fixed;
 
 
-/*  Basic Styling To Override Default For Basic HTML Elements */
+                                 }
+                                 
+                                 .holder {
+                                     display: flex;
+                                     flex-direction: column;
+                                     justify-content: flex-start;
+                                     align-items: flex-start;
+                                     margin: 1%;
+                                     /* background-color: #fff;*/
+                                 }
+                                 
+                                 .entry {
+                               
+                                 display: flex;
+                                 flex-direction: column;
+                                 align-items: center;
+                                 justify-content: space-around;
 
-label {
-    display: block;
-    font-size: 27px;
-}
+                                 
+                                 }
 
-input {
-    display: block;
-    height: 60px;
-    width: 320px;
-    /* background:#22b2da;*/
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-    border-radius: 30px;
-    background: #dcdcdc;
-    box-shadow: inset 17px 17px 34px #a1a1a1, inset -17px -17px 34px #ffffff;
-}
+                                 .title {
+                                 flex-grow: 2;
+                                font-size: 32px;
+                                font-family: var(--oswald);
+                                 }
+                                 
+                                 #entryHolder {
+                               
+                                 align-self: center;
+                                 display: flex;
+                                flex-basis: 50%;
+                                 flex-direction: column;
+                                 align-items: center;
+                                 align-content: center;
+                                 justify-content: flex-start;
+                                 flex-grow:3;
+                                
+                                 }
+                                 
+                                 #date {
+                                 font-family: var(--oswald);
+                                font-size: 32px;
+                                margin: 1rem;
 
-button {
-    width: 400px;
-    height: 100px;
-    background: #3b4a6b;
-    color: #f0d43a;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-    box-shadow: 2px 4px 5px #444;
-}
+                                 }
+                                 
+                                 #temp {
+                                 font-family: var(--oswald);
+                                 font-size: 64px;
+                                 background-color: coral;
+                                 padding: 1.5%;
+                                 border-radius: 5px;
+                                 margin: 1rem;
+                                 }
+                                 
+                                 #content {
+                                 font-family: var(--oswald);
+                                 margin: 1rem;
+                                 }
 
-h1 {
-    font-size: 36px;
-}
-
-textarea {
-    background: #fff;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-}
-
-
-/* Reset style for HTML element on active to have no border*/
-
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
-
-
-/* Style for Placeholder Text*/
-
-::placeholder {
-    /* Firefox, Chrome, Opera */
-    color: #f0d43a;
-    font-family: 'Oswald', sans-serif;
-}
-
-:-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: #f0d43a;
-    font-family: 'Oswald', sans-serif;
-}
-
-::-ms-input-placeholder {
-    /* Microsoft Edge */
-    color: #f0d43a;
-    font-family: 'Oswald', sans-serif;
-}
+                                 #content #wd {
+                                font-size: 24px;
+                                 
+                                 }
+                                 
+                                 .headline {
+                                     align-items: center;
+                                     font-family: var(--raleway);
+                                     color:var(--kake)
+                                 }
+                                 
+                                 
+                                 /*  Basic Styling To Override Default For Basic HTML Elements */
+                                 
+                                 label {
+                                     display: block;
+                                     font-size: 24px;
+                                     color: black;
+                                     font-weight: bold;
+                                     
+                                 }
+                                 
+                                 input {
+                                     display: block;
+                                     height: 60px;
+                                     width: 320px;
+                                    margin-bottom: 1%;
+                                     color: black;
+                                     font-size: 20px;
+                                     font-family: 'Oswald', sans-serif;
+                                     border: none;
+                                     border-radius: 5px;
+                                     background: white;
+                                    
+                                 }
+                                 
+                                 button {
+                                     width: 400px;
+                                     height: 100px;
+                                     background: rgba(212, 65, 20, 0.918);
+                                     color: var(--kake);
+                                     font-size: 26px;
+                                     font-family: 'Oswald', sans-serif;
+                                     border: none;
+                                     box-shadow: 2px 4px 5px #444;
+                                     margin-top: 1rem;
+                                 }
+                                 
+                                 h1 {
+                                     font-size: 36px;
+                                 }
+                                 
+                                 textarea {
+                                     border-radius: 5px;
+                                     background: white;
+                                     color:black;
+                                     font-size: 20px;
+                                     font-family: 'Oswald', sans-serif;
+                                     width: 80%;
+                                     resize: none;
+                                     margin-bottom: 1%;
+                                 }
+                                 /* Reset style for HTML element on active to have no border*/
+                                 
+                                 input:focus,
+                                 select:focus,
+                                 textarea:focus,
+                                 button:focus {
+                                     outline: none;
+                                 }
+                                 /* Style for Placeholder Text*/
+                                 
+                                  ::placeholder {
+                                     /* Firefox, Chrome, Opera */
+                                     color: #dcdcdc;
+                                     font-family: 'Oswald', sans-serif;
+                                 }
+                                 
+                                  :-ms-input-placeholder {
+                                     /* Internet Explorer 10-11 */
+                                     color: #dcdcdc;
+                                     font-family: 'Oswald', sans-serif;
+                                 }
+                                 
+                                  ::-ms-input-placeholder {
+                                     /* Microsoft Edge */
+                                     color: #dcdcdc;
+                                     font-family: 'Oswald', sans-serif;
+                                 }
+                                 
+                                 .parent {
+                                     display: grid;
+                                     grid-template-columns: repeat(4, 1fr);
+                                     grid-template-rows: repeat(5, 1fr);
+                                     grid-column-gap: 0px;
+                                     grid-row-gap: 0px;
+                                 }
+                                 
+                                 .tile-1 {
+                                     grid-area: 1 / 1 / 2 / 6;
+                                 }
+                                 
+                                 .tile-2 {
+                                     grid-area: 2 / 1 / 6 / 3;
+                                 }
+                                 
+                                 .tile-3 {
+                                     grid-area: 2 / 3 / 6 / 5;
+                                 }
