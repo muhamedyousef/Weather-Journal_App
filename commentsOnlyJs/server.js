@@ -4,9 +4,7 @@ var cors = require("cors");
 var bodyParser = require("body-parser");
 var app = express();
 let port = 3000;
-let projectData = {
-   
-};
+let projectData = {};
 
 let dataEnt = [];
 let apiKey = process.env.OPENWEATHERAPPAPI;
@@ -23,29 +21,36 @@ app.use(bodyParser.json());
 app.use(cors());
 // Cors for cross origin allowance
 app.get("/", (req, res, next) => {
-    res.send("hello world");
+  res.send("hello world");
 });
 
 // Initialize the main project folder
 app.use(express.static("website"));
 // Spin up the server
 app.listen(port, () => {
-    console.log(`Example app is listening at url http://localhost:${port}`);
+  console.log(`Example app is listening at url http://localhost:${port}`);
 });
 // Callback to debug
 
 // Initialize all route with a callback function
 app.get("/all", (req, res) => {
-    res.send(dataEnt);
+  res.send(projectData);
 });
 // Callback function to complete GET '/all'
 
 app.get("/datalast", (req, res) => {
-    res.send(dataEnt[dataEnt.length - 1]);
+  res.send(dataEnt[dataEnt.length - 1]);
 });
 
-
 // Post Route
-app.post("/data", (req, res) => {
-    dataEnt.push(req.body);
+app.post("/add", (req, res) => {
+  let data = req.body;
+  projectData["zipdCode"] = data.zip;
+  projectData["CityName"] = data.CityName;
+  projectData["date"] = data.date;
+  projectData["feelings"] = data.feelings;
+  projectData["temprature"] = data.temprature;
+  projectData["description"] = data.description;
+//send the object to the project endpoint
+  res.send(projectData);
 });

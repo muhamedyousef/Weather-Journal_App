@@ -23,7 +23,7 @@ let updateUI = function (dataObj) {
   content.style.display = "inline";
   date.innerHTML = dataObj.date;
   temp.innerHTML = `${dataObj.temprature} C`;
-  content.innerHTML = `You feel <b id="wd">${dataObj.feelings}</b> and the weather is <b id="wd"> ${dataObj.description}</b> in the city of <b id="wd">${dataObj.cityName}</b>`;
+  content.innerHTML = `You feel <b>${dataObj.feelings}</b> and the weather is <b id="wd"> ${dataObj.description}</b> in the city of <b id="wd">${dataObj.cityName}</b>`;
 };
 
 //helper function to check if the ZIP code is valid
@@ -37,19 +37,33 @@ let ZIPValidCheck = function () {
 };
 let emptyFieldAlert = function () {};
 
-// a function to empty fields after submitting 
-let emptyField = function(){
-zipInput.value="";
-feelingsInput.value="";
-}
+// a function to empty fields after submitting
+let emptyField = function () {
+  zipInput.value = "";
+  feelingsInput.value = "";
+};
 
 //access to button and add eventlistner
 /*on clicking the button it will construct a data object which in turn will have a method to
  get the current weather and the whole object will be channeled to the server to save it as an entry */
 genButton.addEventListener("click", (e) => {
   e.preventDefault;
- 
-        async function postData() {
+
+  //Async function to retrieve data from the endpoint of the project [defined but not called]
+  const retrieveUpdateData = async function () {
+    let request = await fetch("http://localhost:3000/all");
+    try {
+      let retrievedData = await request.json();
+      //updating the UI is a separate helper function written in the external scope that takes the responce object and update the UI using it
+      updateUI(retrievedData);
+    } catch {
+      (error) => console.log("error", error);
+    }
+  };
+
+  /*async function to fetch the weather statues and collect the user input and package them into one object that will be sent to the app endpoint
+the retrieve data function will  be called in the try section to ensure it won't fire before the function that will send data*/
+  async function postData() {
     await fetch(
       `https://api.openweathermap.org/data/2.5/weather?zip=${zipInput.value}&appid=${apiKey}&units=metric`
     )
@@ -66,11 +80,12 @@ genButton.addEventListener("click", (e) => {
           temprature: bodyData.main.temp,
           description: bodyData.weather[0].description,
         };
-        updateUI(data);
+        // console.log(data)
+
         return data;
       })
       .then((data) => {
-        fetch("http://localhost:3000/data", {
+        fetch("http://localhost:3000/add", {
           method: "POST",
           credentials: "same-origin",
           headers: {
@@ -79,8 +94,14 @@ genButton.addEventListener("click", (e) => {
           body: JSON.stringify(data),
         });
       });
+    try {
+      retrieveUpdateData();
+    } catch {
+      (error) => ("error", error);
+    }
   }
-  postData();
-  emptyField();
 
+  postData();
+
+  // emptyField();
 });
