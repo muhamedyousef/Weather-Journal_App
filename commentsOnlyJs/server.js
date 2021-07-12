@@ -3,11 +3,13 @@ var express = require("express");
 var cors = require("cors");
 var bodyParser = require("body-parser");
 var app = express();
-let port = 3000;
-let projectData = {};
+let port =3000;
+let projectData = {
+ 
+};
 
-let dataEnt = [];
-let apiKey = process.env.OPENWEATHERAPPAPI;
+
+
 // Express to run server and routes
 
 // Start up an instance of app
@@ -27,9 +29,7 @@ app.get("/", (req, res, next) => {
 // Initialize the main project folder
 app.use(express.static("website"));
 // Spin up the server
-app.listen(port, () => {
-  console.log(`Example app is listening at url http://localhost:${port}`);
-});
+
 // Callback to debug
 
 // Initialize all route with a callback function
@@ -46,7 +46,7 @@ app.get("/datalast", (req, res) => {
 app.post("/add", (req, res) => {
   let data = req.body;
   projectData["zipdCode"] = data.zip;
-  projectData["CityName"] = data.CityName;
+  projectData["CityName"] = data.name;
   projectData["date"] = data.date;
   projectData["feelings"] = data.feelings;
   projectData["temprature"] = data.temprature;
@@ -54,3 +54,8 @@ app.post("/add", (req, res) => {
 //send the object to the project endpoint
   res.send(projectData);
 });
+
+
+app.listen(port, () => {
+    console.log(`Example app is listening at url http://localhost:${port}`);
+}) 

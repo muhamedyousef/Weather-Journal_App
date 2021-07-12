@@ -23,7 +23,7 @@ let updateUI = function (dataObj) {
   content.style.display = "inline";
   date.innerHTML = dataObj.date;
   temp.innerHTML = `${dataObj.temprature} C`;
-  content.innerHTML = `You feel <b>${dataObj.feelings}</b> and the weather is <b id="wd"> ${dataObj.description}</b> in the city of <b id="wd">${dataObj.cityName}</b>`;
+  content.innerHTML = `You feel <b>${dataObj.feelings}</b> and the weather is <b id="wd"> ${dataObj.description}</b>`;
 };
 
 //helper function to check if the ZIP code is valid
@@ -80,8 +80,7 @@ the retrieve data function will  be called in the try section to ensure it won't
           temprature: bodyData.main.temp,
           description: bodyData.weather[0].description,
         };
-        // console.log(data)
-
+      //console.log(bodyData)
         return data;
       })
       .then((data) => {
