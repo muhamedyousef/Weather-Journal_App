@@ -13,7 +13,7 @@ let invalidZip = document.querySelector("#invalidZIP");
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = `${d.getMonth()}.${d.getDate()}.${d.getFullYear()}`;
+let newDate = `${d.getMonth() + 1} . ${d.getDate()} . ${d.getFullYear()}`; // using +1 since the getMonth() is zero-starting function
 
 //helper function to update UI
 let updateUI = function (dataObj) {
@@ -28,14 +28,28 @@ let updateUI = function (dataObj) {
 
 //helper function to check if the ZIP code is valid
 let ZIPValidCheck = function () {
-  invalidZip.style.display = "inline";
-  invalidZip.innerHTML =
-    "the ZIP you submitted does not seem as a valid zip please try another zip";
-  date.style.display = "none";
-  temp.style.display = "none";
-  content.style.display = "none";
+ /* if ((zipInput.value == "") & (feelingsInput.value == "")) {
+    invalidZip.style.display = "inline";
+    invalidZip.innerHTML = `both fields are empty please subit true values`;
+    date.style.display = "none";
+    temp.style.display = "none";
+    content.style.display = "none";
+  } */
+  if ((zipInput.value == "") ) {
+    invalidZip.style.display = "inline";
+    invalidZip.innerHTML =
+      "the ZIP you submitted does not seem as a valid zip please try another zip";
+    date.style.display = "none";
+    temp.style.display = "none";
+    content.style.display = "none";
+  }
 };
-let emptyFieldAlert = function () {};
+let emptyFieldAlert = function () {
+  if ((zipInput.value == "") & (feelingsInput.value == "")) {
+    invalidZip.style.display = "inline";
+    invalidZip.innerHTML = `both fields are empty please subit true values`;
+  }
+};
 
 // a function to empty fields after submitting
 let emptyField = function () {
@@ -80,7 +94,6 @@ the retrieve data function will  be called in the try section to ensure it won't
           temprature: bodyData.main.temp,
           description: bodyData.weather[0].description,
         };
-      //console.log(bodyData)
         return data;
       })
       .then((data) => {
@@ -95,11 +108,12 @@ the retrieve data function will  be called in the try section to ensure it won't
       });
     try {
       retrieveUpdateData();
+      emptyField();
     } catch {
       (error) => ("error", error);
     }
   }
-
+  emptyFieldAlert();
   postData();
 
   // emptyField();

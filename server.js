@@ -3,6 +3,7 @@ var express = require("express");
 var cors = require("cors");
 var bodyParser = require("body-parser");
 var app = express();
+let path = require('path')
 let port = 3000;
 let projectData = {
 
@@ -23,7 +24,7 @@ app.use(bodyParser.json());
 app.use(cors());
 // Cors for cross origin allowance
 app.get("/", (req, res, next) => {
-  res.send("hello world");
+  res.sendFile(path.join(__dirname+'/website/index.html'));
 });
 
 // Initialize the main project folder

@@ -5,7 +5,7 @@
     "main": "",
     "scripts": {
         "test": "jest --collect-coverage",
-        "devserver": "nodemon  sever.js -w"
+        "devserver": "nodemon  server.js -w"
     },
     "repository": {
         "type": "git",
